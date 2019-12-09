@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Update Personal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/personal/update}" th:object="${personForm}" method="post">
+                <div class="row">
+                    <h2 class="mb-5">Update Personal information</h2>
+                    <div class="form-group col-md-6">
+                        <label for="firstName" class="col-form-label">First Name</label>
+                        <input type="text" th:field="*{biography.firstName}" class="form-control" id="firstName" placeholder="First name">
+                        <span th:if="${#fields.hasErrors('biography.firstName')}" th:errors="*{biography.firstName}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastName" class="col-form-label">Last Name</label>
+                        <input type="text" th:field="*{biography.lastName}" class="form-control" id="lastName" placeholder="Last name">
+                        <span th:if="${#fields.hasErrors('biography.lastName')}" th:errors="*{biography.lastName}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="age" class="col-form-label">Age</label>
+                        <input type="number" th:field="*{biography.age}" class="form-control" id="age" placeholder="Age">
+                        <span th:if="${#fields.hasErrors('biography.age')}" th:errors="*{biography.age}" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="birthdate" class="col-form-label">Birth date</label>
+                        <input type="date" th:field="*{biography.birthDate}" class="form-control" id="birthdate" placeholder="Birth date">
+                        <span th:if="${#fields.hasErrors('biography.birthDate')}" th:errors="*{biography.birthDate}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="location" class="col-form-label">Location</label>
+                        <input type="text" th:field="*{biography.location}" class="form-control" id="location" placeholder="Location">
+                        <span th:if="${#fields.hasErrors('biography.location')}" th:errors="*{biography.location}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="country" class="col-form-label">Country</label>
+                        <input type="text" th:field="*{biography.country}" class="form-control" id="country" placeholder="Location">
+                        <span th:if="${#fields.hasErrors('biography.country')}" th:errors="*{biography.country}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Hobbies</label>
+                        <select  id="inputState" class="form-control"  th:field="*{biography.hobbies}" multiple>
+                            <option th:each="hobbie : ${hobbiesList}"
+                                    th:value="${hobbie}"
+                                    th:text="${hobbie}">Select...</option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('biography.hobbies')}" th:errors="*{biography.hobbies}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState2">Readings</label>
+                        <select  id="inputState2" class="form-control"  th:field="*{biography.readings}" multiple>
+                            <option th:each="reading : ${readingsList}"
+                                    th:value="${reading}"
+                                    th:text="${reading}">Select...</option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('biography.readings')}" th:errors="*{biography.readings}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2 class="mb-5">Update Educational information</h2>
+                    <div class="form-group col-md-6">
+                        <label for="year" class="col-form-label">Year</label>
+                        <input type="number" th:field="*{education.year}" class="form-control" id="year" placeholder="Year">
+                        <span th:if="${#fields.hasErrors('education.year')}" th:errors="*{education.year}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="specialization" class="col-form-label">Specialization</label>
+                        <input type="text" th:field="*{education.specialization}" class="form-control" id="specialization" placeholder="Specialization">
+                        <span th:if="${#fields.hasErrors('education.specialization')}" th:errors="*{education.specialization}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="institution" class="col-form-label">Institution</label>
+                        <input type="text" th:field="*{education.institution}" class="form-control" id="institution" placeholder="Institution">
+                        <span th:if="${#fields.hasErrors('education.institution')}" th:errors="*{education.institution}" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="educationLevel" class="col-form-label">Education Level</label>
+                        <input type="text" th:field="*{education.educationLevel}" class="form-control" id="educationLevel" placeholder="Education Level">
+                        <span th:if="${#fields.hasErrors('education.educationLevel')}" th:errors="*{education.educationLevel}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="degree" class="col-form-label">Degree</label>
+                        <input type="text" th:field="*{education.degree}" class="form-control" id="degree" placeholder="Degree">
+                        <span th:if="${#fields.hasErrors('education.degree')}" th:errors="*{education.degree}" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <input type="submit" class="float-right btn btn-primary" value="Update">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+</script>
+</html>

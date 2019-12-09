@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Update Professional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/professional/update}" th:object="${professionalForm}" method="post">
+                <div class="row">
+                    <h2 class="mb-5">Update Professional information</h2>
+                    <div class="form-group col-md-6">
+                        <label for="position" class="col-form-label">Position</label>
+                        <input type="text" th:field="*{position}" class="form-control" id="position" placeholder="Position">
+                        <span th:if="${#fields.hasErrors('position')}" th:errors="*{position}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="loc" class="col-form-label">Location</label>
+                        <input type="text" th:field="*{location}" class="form-control" id="loc" placeholder="Location">
+                        <span th:if="${#fields.hasErrors('location')}" th:errors="*{location}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="years" class="col-form-label">Years</label>
+                        <input type="number" th:field="*{years}" class="form-control" id="years" placeholder="Years">
+                        <span th:if="${#fields.hasErrors('years')}" th:errors="*{years}" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="company" class="col-form-label">Company</label>
+                        <input type="text" th:field="*{company}" class="form-control" id="company" placeholder="Company">
+                        <span th:if="${#fields.hasErrors('company')}" th:errors="*{company}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Skills</label>
+                        <select  id="inputState" class="form-control"  th:field="*{skillSets}" multiple>
+                            <option th:each="skill : ${skills}"
+                                    th:value="${skill}"
+                                    th:text="${skill}">Select...</option>
+                        </select>
+                        <span th:if="${#fields.hasErrors('skillSets')}" th:errors="*{skillSets}" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputState2">Previous Jobs</label>
+                        <select  id="inputState2" class="form-control"  th:field="*{previousJobs}" multiple>
+                            <option th:each="previousJob : ${previousJobs}"
+                                    th:value="${previousJob}"
+                                    th:text="${previousJob}">Select...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <input type="submit" class="float-right btn btn-primary" value="Update">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+</script>
+</html>

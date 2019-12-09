@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div th:switch="${professional}" class="container my-5">
+    <div class="row">
+      <div class="col-md-auto">
+        <h2 th:case="null">No professional information found!</h2>
+       </div>
+      <div class="col-md-auto">
+         <div th:case="*">
+            <h2 class="my-5">Professional Information</h2>
+            <table class="table table-hover table-responsive-md">
+                <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Location</th>
+                    <th>Position</th>
+                    <th>Previous Jobs</th>
+                    <th>Skills</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${professional.getCompany()}"></td>
+                    <td th:text="${professional.getLocation()}"></td>
+                    <td th:text="${professional.getPosition()}"></td>
+                    <td >
+                        <ul style="list-style: none;" th:each="job: ${professional.getPreviousJobs()}">
+                            <li th:text="${job}"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul style="list-style: none;" th:each="skill: ${professional.getSkillSets()}">
+                            <li th:text="${skill}"></li>
+                        </ul>
+                      </td>
+                   </tr>
+                </tbody>
+            </table>
+         </div>
+          <div th:unless="${professional == null}">
+          <a th:href="@{/professional/update}" class="float-right btn btn-primary"><i class="fas fa-user-edit ml-2"></i>update</a>
+          </div>
+      </div>
+    </div>
+</div>
+</body>
+</html>
