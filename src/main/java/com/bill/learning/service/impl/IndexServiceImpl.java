@@ -19,9 +19,7 @@ public class IndexServiceImpl implements IndexService {
 
     @Override
     public String findQuote() {
-        return "Courage is found in unlikely places.\n" +
-                "\n" +
-                "J. R. R. Tolkien";
+        return "Lorem ipsum dolor sit amet, rebum causae adversarium eu vim, altera oblique hendrerit his id, in vis sapientem argumentum. Mel nonumy eloquentiam ut, eirmod eleifend mandamus an eam. Vis summo delicata adversarium an, sea assum movet in, quis dicunt latine in eum. An per iisque inermis, sumo vidit vis ut. Case expetenda principes at qui. Ei graece propriae percipit pri, eam ea natum nostro virtute.";
     }
 
     @Override
